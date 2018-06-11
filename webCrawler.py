@@ -73,7 +73,7 @@ count=1
 
 topic = input('Please Enter Topic:')
 
-for word in range(1, 3):
+while(True):
     word = input('Please enter keyword Or 123 to stop entering keywords: ' )
     if (word != "123"):
         keywords.append(word)
