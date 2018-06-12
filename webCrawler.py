@@ -91,6 +91,7 @@ seedURL.append(s2)
 for url in seedURL:
     q.put(url)
 
+###############################
 while q.empty() == False:
     url = q.get()
     #print(url)
@@ -113,9 +114,13 @@ while q.empty() == False:
         #print(word + ": " + str(c))
 
         #only checks of it is included NOT how many times
+        print(url)
+        print("word: " + word + ": " + str(re.search(word, page_text, re.I)))
         if re.search(word, page_text, re.I):
             tCount += 1
+
             #print(str(word) + ": " + str(tCount))
+            #print("tCount: " + str(tCount) + " Word: " + word)
             if tCount >= 2:
                 title = soup.title.string
                 title = clean_title(title)
@@ -129,13 +134,11 @@ while q.empty() == False:
                 savedURL.append(url)
                 pageCounter += 1
 
-                
-                ######################
                 print('Page # {}: {}'.format(pageCounter, url))
                 break
     if pageCounter >= 10:
         break
-
+#########################################
     #here we go#
     inner_urls = get_urls(soup)
     for inner_url in inner_urls:
