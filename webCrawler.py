@@ -106,7 +106,7 @@ while q.empty() == False:
     soup = BeautifulSoup(pageContent, 'html.parser')
     page_text = soup.get_text()
 
-    print(page_text)
+    #print(page_text)
     #break
 
     tCount=0
