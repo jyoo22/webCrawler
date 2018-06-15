@@ -91,7 +91,7 @@ seedURL.append(s2)
 for url in seedURL:
     q.put(url)
 
-###############################
+
 while q.empty() == False:
     url = q.get()
     #print(url)
@@ -106,7 +106,8 @@ while q.empty() == False:
     soup = BeautifulSoup(pageContent, 'html.parser')
     page_text = soup.get_text()
 
-    #print(page_text)
+    print(page_text)
+    #break
 
     tCount=0
     for word in keywords:
@@ -126,7 +127,7 @@ while q.empty() == False:
                 title = clean_title(title)
                     
                 
-                myPath = os.path.join("/home/jeff/Documents/NJIT/is392/Crawler/creepyCrawlingPages", title + '.html')
+                myPath = os.path.join("/home/jeff/gitProjects/webCrawler/sites", title + '.html')
                 #myPath = os.path.join("/home/jeff/Documents/NJIT/is392/Crawler/creepyCrawlingPages", title + '.html')
                 save(pageContent, myPath)
                 
@@ -138,8 +139,7 @@ while q.empty() == False:
                 break
     if pageCounter >= 10:
         break
-#########################################
-    #here we go#
+
     inner_urls = get_urls(soup)
     for inner_url in inner_urls:
         if is_url_valid(inner_url):
